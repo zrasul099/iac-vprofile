@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - stage
     paths:  
       - terraform/**
   pull_request:
@@ -58,9 +57,9 @@ jobs:
         continue-on-error: true
 
 
-      # - name: Terraform apply
-      #   if: success()
-      #   run: terraform apply -auto-approve  
+      - name: Terraform apply
+        if: success()
+        run: terraform apply -auto-approve  
 
       - name: Terraform destroy
         run: terraform destroy -auto-approve
